@@ -1,17 +1,5 @@
-from video import Video
-from effects import ZoomEffect, RotateEffect, SpeedEffect, CropEffect
-from editors import VideoEditor
-#the effects are supposed to be put manually by modifying this specific file (for now, will be changed)
+from gui import start
 
-#the part where you put your video part
-video = Video("test.mp4")
+#create the illusion of simplicity by making a main.py and putting 2 lines it would be so funny, right
 
-#the place you put your effects at
-editor = VideoEditor(video)
-editor.add_effect(CropEffect(90, 160, 990, 1760))
-editor.apply_effects()
-#name your creation
-editor.export("cropped.mp4")
-video.close()
-
-print("Success")
+start()

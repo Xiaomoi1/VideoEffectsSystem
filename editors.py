@@ -1,3 +1,4 @@
+#VideoEditor coordinates the editing process, it stores the selected effects and applies them to the current video.
 class VideoEditor:
     def __init__(self, video):
         self.video = video
@@ -11,7 +12,7 @@ class VideoEditor:
             self.video = effect.apply(self.video)
 
     def trim(self, start, end):
-        self.video.clip =  self.video.clip.subclipped(start, end)
+        self.video.clip = self.video.clip.subclipped(start, end)
 
     def export(self, filepath):
         self.video.clip.write_videofile(filepath)

@@ -1,11 +1,11 @@
 # Video Effects System
 
-# This project is a simplified model of a video editing system written in Python.
+This project is a simplified video editing system written in Python, the main purpose of the project is to demonstrate object-oriented programming, specifically inheritance and polymorphism. The system contains a base Effect class and several different effects:
+BlurEffect, ZoomEffect, CropEffect, RotateEffect and SpeedEffect, each effect inherits from Effect and implements the same apply(video)
+operation in its own way. This allows the VideoEditor to work with different effects through the same interface while each effect performs a different operation.
 
-# The main purpose of the project is to demonstrate polymorphism.
+The program also provides a graphical interface where the user can open a
+video, select effects, trim the video and export the edited result.
 
-# The system will contain a base Effect class and several different effects, such as BlurEffect, ZoomEffect, CropEffect, RotateEffect and SpeedEffect.
-
-# Each effect will implement the same apply(video) operation in its own way. This will allow different effects to be treated as the same general type while behaving differently.
-
-# The project will model how such a system could work without actually processing real video files.
+The project uses MoviePy to perform the actual video editing operations and
+Tkinter for the graphical interface.

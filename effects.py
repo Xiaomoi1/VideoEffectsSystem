@@ -1,10 +1,20 @@
+import numpy as np
+from PIL import Image, ImageFilter
 class Effect:
     def apply(self, video):
         raise NotImplementedError
 
+#base class for all video effects, every effect provides its own version of apply(), which allows the VideoEditor to work with different
+#effects through the same interface
 class BlurEffect(Effect):
     def apply(self, video):
-        print(f"Applying blur effect to '{video.title}'")
+        def blur_frame(frame):
+            frame = frame.astype(np.uint8)
+            image = Image.fromarray(frame)
+            return np.array(image.filter(ImageFilter.GaussianBlur(5)))
+
+        video.clip = video.clip.image_transform(blur_frame)
+        return video
 
 class ZoomEffect(Effect):
     def apply(self, video):
@@ -26,6 +36,7 @@ class SpeedEffect(Effect):
 
 class CropEffect(Effect):
     def __init__(self, x1, y1, x2, y2):
+#the coordinates describe the rectangle that will remain (x1, y1) is the top-left corner and (x2, y2) is the  bottom-right corner of the cropped area
         self.x1 = x1
         self.y1 = y1
         self.x2 = x2
